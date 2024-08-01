@@ -230,6 +230,20 @@
                                             @enderror
                                         </div>
                                     @endif
+                                    <h4 class="mb-10 font-weight-bold text-dark">6. Pilih Intensitas</h4>
+                                    <div class="form-group fv-plugins-icon-container has-success">
+                                        <label>Pilih Intensitas</label>
+                                        <select class="form-control form-control-solid form-control-lg"
+                                            wire:model='selected_intensity'>
+                                            <option value="" selected>Pilih intensitas</option>
+                                            <option value="HI">HI</option>
+                                            <option value="MID">MID</option>
+                                            <option value="LOW">LOW</option>
+                                        </select>
+                                        @error('selected_intensity')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                             </form>
                             <!--begin::Wizard Actions-->
@@ -306,10 +320,18 @@
                                     class="form-control form-control-solid">
                             </div>
                         </div>
+                        <div class="form-group row align-items-center">
+                            <label class="col-sm-4 col-form-label text-left">Intensitas :</label>
+                            <div class="col-sm-8">
+                                <input type="text" value="{{ $selected_intensity }}"
+                                    class="form-control form-control-solid">
+                            </div>
+                        </div>
                         <div class="mt-5">
-                            <button type="button" class="btn btn-outline-danger font-weight-bold" data-dismiss="modal"
-                               >Close</button>
-                            <button class="btn btn-outline-success" wire:click='createInventory'>Tambahkan Produk</button>
+                            <button type="button" class="btn btn-outline-danger font-weight-bold"
+                                data-dismiss="modal">Close</button>
+                            <button class="btn btn-outline-success" wire:click='createInventory'>Tambahkan
+                                Produk</button>
                         </div>
                     </div>
                 </div>

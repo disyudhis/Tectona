@@ -19,7 +19,7 @@ class ComponentListTransaksiMasuk extends Component
 {
     use LivewireAlert;
 
-    public $selected_bahan, $selected_jenis, $selected_warna, $qty = 1, $selected_rak, $selected_slot;
+    public $selected_bahan, $selected_jenis, $selected_warna, $qty = 1, $selected_rak, $selected_slot, $selected_intensity;
     public $bahan_name, $jenis_name, $warna_name, $rack_code, $slot;
     public $bahan_code, $jenis_code, $warna_code;
     public $slots;
@@ -92,6 +92,7 @@ class ComponentListTransaksiMasuk extends Component
                 'code' => $this->generateCode(),
                 'quantity' => $this->qty,
                 'slot_id' => $this->selected_slot,
+                'intensity' => $this->selected_intensity
             ]);
 
             $slot_service->update($this->selected_slot, [
@@ -112,6 +113,6 @@ class ComponentListTransaksiMasuk extends Component
 
     public function generateCode()
     {
-        return $this->jenis_code . '-' . $this->bahan_code . '-' . $this->warna_code . '-' . $this->rack_code . '-' . $this->slot;
+        return $this->jenis_code . '-' . $this->bahan_code . '-' . $this->warna_code . '-' . $this->rack_code . '-' . $this->slot . '-' . $this->selected_intensity;
     }
 }

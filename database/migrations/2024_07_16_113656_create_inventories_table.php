@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->integer('quantity')->nullable();
             $table->string('status')->default('AVAILABLE')->nullable();
+            $table->string('intensity')->nullable();
             $table->foreignUuid('slot_id')->nullable()->references('id')->on('rack_slots');
             $table->softDeletes();
             $table->timestamps();

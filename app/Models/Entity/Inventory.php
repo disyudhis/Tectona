@@ -27,7 +27,8 @@ class Inventory extends AppModel
         'code',
         'quantity',
         'slot_id',
-        'status'
+        'status',
+        'intensity'
     ];
 
     /**
