@@ -50,4 +50,8 @@ class MaterialColorService extends AppService implements AppServiceInterface
         $row->delete();
         return $row;
     }
+
+    public function getNameByCode($code) {
+        return MaterialColorTable::where('code', $code)->pluck('name')->first();
+    }
 }

@@ -50,4 +50,7 @@ class MaterialService extends AppService implements AppServiceInterface
         return $row;
     }
 
+    public function getNameByCode($code) {
+        return MaterialTable::where('code', $code)->pluck('name')->first();
+    }
 }

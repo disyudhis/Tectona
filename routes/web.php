@@ -9,6 +9,7 @@ use App\Http\Livewire\Pages\KepalaGudang\PengaturanAkun\KepalaPengaturanAkunInde
 use App\Http\Livewire\Pages\OperatorGudang\BahanBaku\OperatorBahanBakuIndex;
 use App\Http\Livewire\Pages\OperatorGudang\BahanBaku\OperatorBahanBakuManage;
 use App\Http\Livewire\Pages\OperatorGudang\Dashboard\OperatorDashboardIndex;
+use App\Http\Livewire\Pages\OperatorGudang\DetailSlot\OperatorSlotDetail;
 use App\Http\Livewire\Pages\OperatorGudang\History\OperatorHistoryIndex;
 use App\Http\Livewire\Pages\OperatorGudang\History\OperatorHistoryKeluarIndex;
 use App\Http\Livewire\Pages\OperatorGudang\JenisBahan\OperatorJenisBahanIndex;
@@ -95,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
                     Route::get('/', OperatorListRackIndex::class)->name('og.listrack.index');
                     Route::get('/add', OperatorListRackManage::class)->name('og.listrack.manage');
                     Route::get('/{id}', OperatorListRackDetail::class)->name('og.listrack.detail');
+                    Route::get('/{id}/{id_slot}', OperatorSlotDetail::class)->name('og.listslot.detail');
                 });
 
                 Route::prefix('history')->group(function () {

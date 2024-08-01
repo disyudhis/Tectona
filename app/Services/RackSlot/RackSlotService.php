@@ -67,4 +67,12 @@ class RackSlotService extends AppService implements AppServiceInterface
         return RackSlotTable::where('inventory_code', $id)->pluck('id')->first();
     }
 
+    public function getOnlyCode($id) {
+        return RackSlotTable::where('id', $id)->pluck('inventory_code')->first();
+    }
+
+    public function getSlotCodeById($id) {
+        return RackSlotTable::where('id', $id)->pluck('code')->first();
+    }
+
 }

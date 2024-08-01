@@ -47,4 +47,8 @@ class JenisBahanService extends AppService implements AppServiceInterface
         $row->delete();
         return $row;
     }
+
+    public function getNameByCode($code){
+        return JenisBahanTable::where('code', $code)->pluck('name')->first();
+    }
 }

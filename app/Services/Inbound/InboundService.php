@@ -45,4 +45,8 @@ class InboundService extends AppService implements AppServiceInterface
         $row->delete();
         return $row;
     }
+
+    public function getTransaksiByInventoryId($id)  {
+        return InboundTable::where('inventory_id', $id)->first();
+    }
 }

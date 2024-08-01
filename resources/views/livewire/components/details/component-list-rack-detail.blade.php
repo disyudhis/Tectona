@@ -23,21 +23,10 @@
                                 <div class="row align-items-center mr-3">
                                     @foreach ($slots as $slot)
                                         <div class="justify-content-between">
-                                            <button class="btn font-weight-bold btn-light-{{ $slot->status_color }} mr-2">Slot no. {{ $slot->code }} <span class="label label-{{ $slot->status_color }} ml-2">.</span></button>
-                                            {{-- <div
-                                                class="bg-{{ $slot->status_color }}-o-30 rounded p-3 h-100 d-flex flex-column">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <p class="mb-0 font-weight-boldest">{{ $slot->code }}</p>
-                                                    <span
-                                                        class="label label-inline label-light-{{ $slot->status_color }} label-xl label-rounded font-weight-bolder">
-                                                        {{ $slot->status }}
-                                                    </span>
-                                                </div>
-                                            </div> --}}
+                                            <a href="{{ $quantities[$slot->inventory_code] ? route('og.listslot.detail', ['id' => $rack_id, 'id_slot' => $slot->id]) : 'javascript:;' }}" type="button" class="btn font-weight-bold btn-light-{{ $slot->status_color }} mr-2">Slot no. {{ $slot->code }} <span class="label label-{{ $slot->status_color }} label-lg ml-2">{{ $quantities[$slot->inventory_code] ?? '0' }}</span></a>
                                         </div>
                                     @endforeach
                                 </div>
-
                             </div>
                         </div>
                     </div>

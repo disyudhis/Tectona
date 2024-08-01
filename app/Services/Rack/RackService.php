@@ -48,4 +48,8 @@ class RackService extends AppService implements AppServiceInterface
         $row->delete();
         return $row;
     }
+
+    public function getCode($id) {
+        return RackTable::where('id', $id)->pluck('code')->first();
+    }
 }
