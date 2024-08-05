@@ -24,7 +24,7 @@ class InventoryService extends AppService implements AppServiceInterface
 
     public function getById($id)
     {
-        return InventoryTable::findOrFail($id);
+        return InventoryTable::find($id);
     }
 
     public function create($data)
@@ -56,7 +56,7 @@ class InventoryService extends AppService implements AppServiceInterface
     }
 
     public function getAllAvailable()  {
-        return InventoryTable::where('status', 'AVAILABLE')->get();
+        return InventoryTable::where('status', 'AVAILABLE')->orderBy('updated_at', 'desc')->get();
     }
 
     public function countStockByCode($code){
