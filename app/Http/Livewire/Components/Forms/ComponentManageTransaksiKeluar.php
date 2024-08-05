@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Components\Forms;
 
+use App\Notifications\LowStockNotification;
 use App\Rules\ValidQuantity;
 use App\Services\Inventory\InventoryService;
 use App\Services\Outbond\OutbondService;
 use App\Services\RackSlot\RackSlotService;
+use App\Services\User\UserService;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
@@ -40,7 +42,8 @@ class ComponentManageTransaksiKeluar extends Component
         $this->dispatchBrowserEvent('openModalSubmit');
     }
 
-    public function closeModalSubmit() {
+    public function closeModalSubmit()
+    {
         $this->dispatchBrowserEvent('closeModalSubmit');
     }
 
@@ -56,33 +59,40 @@ class ComponentManageTransaksiKeluar extends Component
         ]);
     }
 
-    public function createOutbonds(OutbondService $outbond_service, InventoryService $inventory_service, RackSlotService $slot_service) {
+    public function createOutbonds(OutbondService $outbond_service, InventoryService $inventory_service, RackSlotService $slot_service, UserService $user_service)
+    {
         try {
             $outbond_service->create([
                 'inventory_code' => $this->stok_code,
-                'quantity' => $this->quantity
+                'quantity' => $this->quantity,
             ]);
             $currentStok = $inventory_service->countStockById($this->selected_stok);
             $currentSlot = $slot_service->getSlotIdByCode($this->stok_code);
+            $inventory = $inventory_service->getByCode($this->stok_code);
             $newStok = $currentStok - $this->quantity;
             if ($newStok == 0 || $newStok == null) {
                 $inventory_service->update($this->selected_stok, [
-                    'status' => 'DELETED'
+                    'status' => 'DELETED',
                 ]);
                 $slot_service->update($currentSlot, [
-                    'inventory_code' => null,
-                    'status' => 'AVAILABLE'
+                    'inventory' => null,
+                    'status' => 'AVAILABLE',
                 ]);
-            }else {
-                $inventory_service->update($this->selected_stok, [
-                    'quantity' => $newStok
-                ]);
+            } else {
+                if ($newStok <= 5) {
+                    $inventory_service->update($this->selected_stok, [
+                        'quantity' => $newStok,
+                    ]);
+                    $users = $user_service->getAll();
+                    foreach ($users as $user) {
+                       $user->notify(new LowStockNotification($inventory));
+                    }
+                }
             }
             $this->flash('success', 'Transaksi keluar berhasil', [], route('og.history.keluar.index'));
         } catch (\Exception $e) {
             $this->closeModalSubmit();
             $this->alert('error', $e->getMessage());
         }
-
     }
 }

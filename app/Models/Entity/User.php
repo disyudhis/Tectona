@@ -4,6 +4,7 @@ namespace App\Models\Entity;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\AppAuthenticatable;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends AppAuthenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use Notifiable, HasFactory, SoftDeletes;
 
     const ROLE_OG       = 'OPERATOR GUDANG';
     const ROLE_KG      = 'KEPALA GUDANG';
@@ -23,6 +24,9 @@ class User extends AppAuthenticatable
      */
     protected $table = 'users';
 
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -32,8 +36,6 @@ class User extends AppAuthenticatable
         'name',
         'email',
         'role',
-        'role_permission_id',
-        'fcm_token',
         'password',
     ];
 

@@ -19,6 +19,7 @@ use App\Http\Livewire\Pages\OperatorGudang\ListRack\OperatorListRackIndex;
 use App\Http\Livewire\Pages\OperatorGudang\ListRack\OperatorListRackManage;
 use App\Http\Livewire\Pages\OperatorGudang\SatuanBahan\OperatorSatuanBahanIndex;
 use App\Http\Livewire\Pages\OperatorGudang\TransaksiKeluar\OperatorTransaksiKeluarIndex;
+use App\Http\Livewire\Pages\OperatorGudang\TransaksiMasuk\OperatorListTransaksiMasuk;
 use App\Http\Livewire\Pages\OperatorGudang\TransaksiMasuk\OperatorTransaksiMasukIndex;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\LoginViewIndex;
@@ -88,6 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
                 });
 
                 Route::prefix('transaksi')->group(function () {
+                    Route::get('/', OperatorListTransaksiMasuk::class)->name('og.listtransaksi.index');
                     Route::get('/masuk', OperatorTransaksiMasukIndex::class)->name('og.transaksi.masuk.index');
                     Route::get('/keluar', OperatorTransaksiKeluarIndex::class)->name('og.transaksi.keluar.index');
                 });

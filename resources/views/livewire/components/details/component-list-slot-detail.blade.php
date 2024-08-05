@@ -18,7 +18,7 @@
                 <!--begin::Content-->
                 <div class="d-flex flex-wrap mt-14">
                     <div class="mr-12 d-flex flex-column mb-7">
-                        <span class="d-block font-weight-bold mb-4">Start Date</span>
+                        <span class="d-block font-weight-bold mb-4">Tanggal Masuk</span>
                         <span class="btn btn-light-primary btn-sm font-weight-bold btn-upper btn-text">{{ $transaksi_masuk->created_at }}</span>
                     </div>
                     <div class="mr-12 d-flex flex-column mb-7">

@@ -9,13 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class UserService extends AppService implements AppServiceInterface
 {
-
     public function __construct(UserTable $model)
     {
         parent::__construct($model);
     }
 
-
+    public function getAll()
+    {
+        return UserTable::all();
+    }
     public function dataTable($filter)
     {
         return UserTable::datatable($filter)->paginate($filter->entries ?? 15);
@@ -23,7 +25,7 @@ class UserService extends AppService implements AppServiceInterface
 
     public function getById($id)
     {
-        return UserTable::findOrFail($id);
+        return UserTable::find($id);
     }
 
     public function create($data)

@@ -56,7 +56,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div id="kt_header_mobile" class="header-mobile">
                     <!--begin::Logo-->
                     <a href="index.html">
-                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-tectona.png') }}" class="max-h-30px" />
+                        <img alt="Logo" src="{{ asset('assets/media/logos/logo-tectona.png') }}"
+                            class="max-h-30px" />
                     </a>
                     <!--end::Logo-->
                     <!--begin::Toolbar-->
@@ -103,6 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Topbar-->
                         <div class="topbar topbar-minimize">
                             <!--begin::User-->
+                            @livewire('components.notification.notification-dropdown')
                             <div class="dropdown">
                                 <!--begin::Toggle-->
                                 <div class="topbar-item" data-toggle="dropdown" data-offset="0px,0px">
@@ -110,9 +112,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="svg-icon svg-icon-lg">
                                             <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
                                             <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
                                                     <polygon points="0 0 24 0 24 24 0 24" />
                                                     <path
                                                         d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"

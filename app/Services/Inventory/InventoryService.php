@@ -62,4 +62,12 @@ class InventoryService extends AppService implements AppServiceInterface
     public function countStockByCode($code){
         return InventoryTable::where('code', $code)->pluck('quantity')->first();
     }
-}
+
+    public function getLowStock(){
+        return InventoryTable::where('quantity', '<=',  5)->get();
+    }
+
+    public function getLowStockByCode($id) {
+        return InventoryTable::where('quantity', '<=',  5)->where('inventory_code', $id)->first();
+    }
+ }

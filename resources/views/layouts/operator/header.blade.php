@@ -40,6 +40,12 @@
             </a>
             <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                 <ul class="menu-subnav">
+                    <li class="menu-item {{ Route::currentRouteNamed('og.listtransaksi.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
+                        <a href="{{ route('og.listtransaksi.index') }}" class="menu-link">
+                            <span class="menu-text">Daftar Barang</span>
+                            <span class="menu-desc"></span>
+                        </a>
+                    </li>
                     <li class="menu-item {{ Route::currentRouteNamed('og.transaksi.masuk.index') ? 'menu-item-active' : '' }}" aria-haspopup="true">
                         <a href="{{ route('og.transaksi.masuk.index') }}" class="menu-link">
                             <span class="menu-text">Transaksi Masuk</span>

@@ -115,4 +115,5 @@ class ComponentListTransaksiMasuk extends Component
     {
         return $this->jenis_code . '-' . $this->bahan_code . '-' . $this->warna_code . '-' . $this->rack_code . '-' . $this->slot . '-' . $this->selected_intensity;
     }
+
 }
