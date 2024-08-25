@@ -7,6 +7,10 @@ use App\Models\Entity\RackSlot;
 class RackSlotTable extends RackSlot
 {
     public function rack()  {
-        $this->belongsTo(RackTable::class);
+       return $this->belongsTo(RackTable::class);
+    }
+
+    public function inventories(){
+        return $this->hasMany(InventoryTable::class, 'slot_id', 'id');
     }
 }

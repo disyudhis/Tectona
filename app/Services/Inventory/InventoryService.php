@@ -70,4 +70,12 @@ class InventoryService extends AppService implements AppServiceInterface
     public function getLowStockByCode($id) {
         return InventoryTable::where('quantity', '<=',  5)->where('inventory_code', $id)->first();
     }
+
+    public function getTotalQuantityBySlotId($id){
+        return InventoryTable::where('slot_id', $id)->sum('quantity');
+    }
+
+    public function getAllInventoryBySlotId($id){
+        return InventoryTable::where('slot_id', $id)->get();
+    }
  }

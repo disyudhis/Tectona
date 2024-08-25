@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('code')->nullable();
             $table->foreignUuid('rack_id')->nullable()->references('id')->on('racks');
-            $table->string('inventory_code')->nullable();
+            $table->integer('remaining')->default(50)->nullable();
             $table->string('status')->default('AVAILABLE')->nullable();
             $table->softDeletes();
             $table->timestamps();

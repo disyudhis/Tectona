@@ -48,7 +48,7 @@ class RackSlotService extends AppService implements AppServiceInterface
     }
 
     public function countSlot($id)  {
-        return RackSlotTable::where('rack_id', $id)->where('status', 'AVAILABLE')->count();
+        return RackSlotTable::where('rack_id', $id)->where('remaining', '!=', 0)->count();
     }
 
     public function countAllSlot($id) {
@@ -75,4 +75,15 @@ class RackSlotService extends AppService implements AppServiceInterface
         return RackSlotTable::where('id', $id)->pluck('code')->first();
     }
 
+    public function getRemainingSlotById($id) {
+        return RackSlotTable::where('id', $id)->pluck('remaining')->first();
+    }
+
+    public function getAllInventoriesWithSlotId($id){
+        return RackSlotTable::with('inventories')->where('id', $id)->get();
+    }
+
+    public function findZeroRemainingSlot(){
+        return RackSlotTable::where('remaining', 0)->get();
+    }
 }

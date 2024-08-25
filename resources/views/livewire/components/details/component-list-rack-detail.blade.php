@@ -23,7 +23,7 @@
                                 <div class="row align-items-center mr-3">
                                     @foreach ($slots as $slot)
                                         <div class="justify-content-between">
-                                            <a href="{{ $quantities[$slot->inventory_code] ? route('og.listslot.detail', ['id' => $rack_id, 'id_slot' => $slot->id]) : 'javascript:;' }}" type="button" class="btn font-weight-bold btn-light-{{ $slot->status_color }} mr-2">Slot no. {{ $slot->code }} <span class="label label-{{ $slot->status_color }} label-lg ml-2">{{ $quantities[$slot->inventory_code] ?? '0' }}</span></a>
+                                            <a href="{{ $quantities[$slot->id] ? route('og.listslot.detail', ['id' => $rack_id, 'id_slot' => $slot->id]) : 'javascript:;' }}" type="button" class="btn font-weight-bold btn-light-{{ $slot->status_color }} mr-2">Slot no. {{ $slot->code }} <span class="label label-{{ $slot->status_color }} label-lg ml-2">{{ $quantities[$slot->id] ?? '0' }}</span></a>
                                         </div>
                                     @endforeach
                                 </div>

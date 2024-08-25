@@ -39,7 +39,7 @@
                 </ul>
             </div>
         </li>
-        <li class="menu-item menu-item-open menu-item-submenu menu-item-rel {{ Route::currentRouteNamed('kg.pengaturan.*') ? 'menu-item-open menu-item-here' : '' }}" data-menu-toggle="click" aria-haspopup="true">
+        {{-- <li class="menu-item menu-item-open menu-item-submenu menu-item-rel {{ Route::currentRouteNamed('kg.pengaturan.*') ? 'menu-item-open menu-item-here' : '' }}" data-menu-toggle="click" aria-haspopup="true">
             <a href="javascript:;" class="menu-link menu-toggle">
                 <span class="menu-text">Pengaturan Akun</span>
                 <i class="menu-arrow"></i>
@@ -54,7 +54,7 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
     </ul>
     <!--end::Header Nav-->
 </div>

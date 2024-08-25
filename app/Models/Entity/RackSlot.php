@@ -28,8 +28,8 @@ class RackSlot extends AppModel
     protected $fillable = [
         'code',
         'rack_id',
-        'status',
-        'inventory_code'
+        'remaining',
+        'status'
     ];
 
     /**

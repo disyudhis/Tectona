@@ -23,8 +23,8 @@ class ComponentListRackDetail extends Component
         $rack = $rack_service->getById($this->rack_id);
         $slots = $slot_service->getAllByRackId($this->rack_id);
         $quantities = [];
-        foreach($slots as $slot) {
-            $quantities[$slot->inventory_code] = $inventory_service->countStockByCode($slot->inventory_code);
+        foreach ($slots as $slot) {
+            $quantities[$slot->id] = $inventory_service->getTotalQuantityBySlotId($slot->id);
         }
         return view('livewire.components.details.component-list-rack-detail', compact('rack', 'slots', 'quantities'));
     }
